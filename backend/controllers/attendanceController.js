@@ -20,12 +20,14 @@ export const markAttendance = async (req, res) => {
 
     // ✅ Normalize current IP
     const currentIP = normalizeIP(
-      req.headers["x-forwarded-for"] || req.socket.remoteAddress
+      req.headers["x-forwarded-for"] || req.socket.remoteAddress, 2
     );
+
+    const registeredIP = normalizeIP(user.ipAddress, 2);
 
     // ✅ Enforce IP check only in production
     if (process.env.NODE_ENV === "production") {
-      if (currentIP !== user.ipAddress) {
+      if (currentIP !== registeredIP) {
         return res.status(403).json({ msg: "IP address mismatch" });
       }
     }
