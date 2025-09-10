@@ -48,7 +48,7 @@ export const markAttendance = async (req, res) => {
     const minutes = now.getMinutes();
 
     const isMorningWindow = hour === 10 && minutes <= 30;
-    const isAfternoonWindow = hour === 14 && minutes <= 30;
+    const isAfternoonWindow = hour === 15 && minutes <= 30;
 
     if (type === "morning" && !isMorningWindow) {
       return res
