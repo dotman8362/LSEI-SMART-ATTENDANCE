@@ -47,13 +47,13 @@ export const markAttendance = async (req, res) => {
     const hour = now.getHours();
     const minutes = now.getMinutes();
 
-    const isMorningWindow = hour === 15 && minutes <= 30;
-    const isAfternoonWindow = hour === 16 && minutes <= 30;
+    const isMorningWindow = hour === 10 && minutes <= 30;
+    const isAfternoonWindow = hour === 14 && minutes <= 30;
 
     if (type === "morning" && !isMorningWindow) {
       return res
         .status(400)
-        .json({ msg: "Morning sign-in allowed only between 08:00 - 08:30" });
+        .json({ msg: "Morning sign-in allowed only between 10:00 - 10:30" });
     }
 
     if (type === "afternoon" && !isAfternoonWindow) {
