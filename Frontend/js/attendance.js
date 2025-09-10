@@ -48,7 +48,7 @@ function getAttendanceType() {
     }
 
     // Afternoon: 14:00 - 14:30
-    if (hour === 14 && minutes >= 0 && minutes <= 30) {
+    if (hour === 15 && minutes >= 0 && minutes <= 30) {
         return 'afternoon';
     }
 
